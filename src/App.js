@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     
     this.state = {
-      recipes: recipes,
+      recipes: [],
       url: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d'
     }
   }
@@ -28,7 +28,7 @@ class App extends Component {
 
   // commenting this out to make less requests to api
    componentDidMount() {
-    // this.getRecipes();
+     this.getRecipes();
   } 
 
 

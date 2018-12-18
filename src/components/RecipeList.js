@@ -18,8 +18,7 @@ class RecipeList extends React.Component {
                     </div>
                     <div className="row">
                         {
-                            recipes.map(recipe => {
-
+                            recipes.map((recipe, index) => {
                                 return(
                                     <Recipe key={recipe.recipe_id}
                                     recipe={recipe}
