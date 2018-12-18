@@ -1,8 +1,36 @@
 import React from 'react';
 import Recipe from './Recipe';
 
+// convert to stateless component
+const RecipeList = props => {
+    console.log(props);
+    return(
+        <React.Fragment>
+            <div className="container my-5">
+            {/* Title */}
+                <div className="row">
+                    <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
+                        <h1 className="text-slanted">Recipe List</h1>
+                    </div>
+            {/* End Title */}
+                </div>
+                <div className="row">
+                    {
+                        props.recipes.map((recipe, index) => {
+                            return(
+                                <Recipe key={recipe.recipe_id}
+                                recipe={recipe}
+                                />
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        </React.Fragment>
+    )}
 
-class RecipeList extends React.Component {
+
+/* class RecipeList extends React.Component {
 // destructure props
 
     render() {
@@ -10,7 +38,7 @@ class RecipeList extends React.Component {
         return(
             <React.Fragment>
                 <div className="container my-5">
-                    {/* title */}
+                    {/* titl
                     <div className="row">
                         <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
                             <h1 className="text-slanted">Recipe List</h1>
@@ -31,6 +59,6 @@ class RecipeList extends React.Component {
             </React.Fragment>
         )
     }
-}
+} */
 
 export default RecipeList;
