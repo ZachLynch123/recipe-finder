@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {recipes} from './tempData';
 import RecipeList from './components/RecipeList';
+import Details from './components/Details'
 
 import './App.css';
 
@@ -9,8 +10,9 @@ class App extends Component {
     super(props);
     
     this.state = {
-      recipes: [],
-      url: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d'
+      recipes: recipes,
+      url: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d',
+      details_id: 35382
     }
   }
 
@@ -28,17 +30,17 @@ class App extends Component {
 
   // commenting this out to make less requests to api
    componentDidMount() {
-     this.getRecipes();
+    //this.getRecipes();
   } 
 
 
 
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
-        <RecipeList recipes={this.state.recipes} />
+{/*         <RecipeList recipes={this.state.recipes} />
+ */}        <Details id={this.state.details_id}/>
       </div>
     );
   }
