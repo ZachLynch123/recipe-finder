@@ -3,7 +3,6 @@ import Recipe from './Recipe';
 
 // convert to stateless component
 const RecipeList = props => {
-    console.log(props);
     return(
         <React.Fragment>
             <div className="container my-5">
@@ -29,36 +28,5 @@ const RecipeList = props => {
         </React.Fragment>
     )}
 
-
-/* class RecipeList extends React.Component {
-// destructure props
-
-    render() {
-        const { recipes } = this.props 
-        return(
-            <React.Fragment>
-                <div className="container my-5">
-                    {/* titl
-                    <div className="row">
-                        <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
-                            <h1 className="text-slanted">Recipe List</h1>
-                        </div>
-                    </div>
-                    <div className="row">
-                        {
-                            recipes.map((recipe, index) => {
-                                return(
-                                    <Recipe key={recipe.recipe_id}
-                                    recipe={recipe}
-                                    />
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            </React.Fragment>
-        )
-    }
-} */
 
 export default RecipeList;

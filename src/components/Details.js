@@ -15,10 +15,18 @@ class Details extends React.Component {
 
 
     render() {
-        console.log(this.state.recipe);
-        
+        const { image_url, publisher, publisher_url, source_url, title, ingredients } = this.state.recipe;        
         return(
-            <h1>hello!</h1>
+            <React.Fragment>
+                <div className="container">
+                <div className="row">
+                <div className="col-10 mx-auto col-md-6 my-3">
+                <button></button>
+                </div>
+                </div>
+                </div>
+
+            </React.Fragment>
         )
     }
 }
