@@ -14,14 +14,29 @@ class Details extends React.Component {
     }
 
 
+    async componentDidMount() {
+        try {
+            const data = await fetch(this.state.url);
+            const josnData = await data.json()
+            this.setState((state, props) => {
+                return {recipe: josnData.recipe}
+            }, () => {});
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
     render() {
-        const { image_url, publisher, publisher_url, source_url, title, ingredients } = this.state.recipe;        
+        const { image_url, publisher, publisher_url, source_url, title, ingredients } = this.state.recipe; 
+        const { handleIndex } = this.props; 
+              
         return(
             <React.Fragment>
                 <div className="container">
                     <div className="row">
                         <div className="col-10 mx-auto col-md-6 my-3">
-                            <button type="button" className="btn btn-warning mb-5 text-capitalize">
+                            <button type="button" className="btn btn-warning mb-5 text-capitalize"
+                            onClick={() => handleIndex(1)}>
                                 Back to list</button>
                                 <img src={image_url} className="d-block w-100" alt="recipe" />
                         </div>

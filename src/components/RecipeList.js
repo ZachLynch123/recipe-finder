@@ -3,6 +3,8 @@ import Recipe from './Recipe';
 
 // convert to stateless component
 const RecipeList = props => {
+    console.log(props);
+    
     return(
         <React.Fragment>
             <div className="container my-5">
@@ -19,6 +21,7 @@ const RecipeList = props => {
                             return(
                                 <Recipe key={recipe.recipe_id}
                                 recipe={recipe}
+                                handleDetailId={props.handleDetailId}
                                 />
                             )
                         })

@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       recipes: [],
       url: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d',
-      details_id: 35382
+      details_id: 0,
+      index: 1
     }
   }
 
@@ -30,17 +31,37 @@ class App extends Component {
 
   // commenting this out to make less requests to api
    componentDidMount() {
-    //this.getRecipes();
+    this.getRecipes();
   } 
 
+  detailsPage = index => {
+    switch(index) {
+      default:
+      case 1: 
+        return(<RecipeList handleDetailId={this.handleDetailId} recipes={this.state.recipes}  />)
+      case 0:
+        return(<Details id={this.state.details_id} handleIndex={this.handleIndex}/>
+          )
+    }
+  }
 
+  handleIndex = index => {
+    this.setState({
+      index: index
+    })
+  }
 
+  handleDetailId = (index, id) => {
+    this.setState({
+      index: index,
+      details_id: id
+    })
+  }
 
   render() {
     return (
       <div className="App">
-{/*          <RecipeList recipes={this.state.recipes} />
- */}        <Details id={this.state.details_id}/>
+        {this.detailsPage(this.state.index)}
       </div>
     );
   }
