@@ -3,6 +3,7 @@ import React from 'react';
 class Recipe extends React.Component {
 
     render() {
+        // destructuring props
         const { image_url, title, source_url, publisher, recipe_id } = this.props.recipe;
         const { handleDetailId } = this.props;
         

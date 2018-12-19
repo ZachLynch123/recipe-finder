@@ -14,6 +14,7 @@ class Details extends React.Component {
     }
 
 
+    // Async request for details api call
     async componentDidMount() {
         try {
             const data = await fetch(this.state.url);
@@ -27,6 +28,7 @@ class Details extends React.Component {
     }
 
     render() {
+        // destructuring state and props
         const { image_url, publisher, publisher_url, source_url, title, ingredients } = this.state.recipe; 
         const { handleIndex } = this.props; 
               
@@ -40,7 +42,6 @@ class Details extends React.Component {
                                 Back to list</button>
                                 <img src={image_url} className="d-block w-100" alt="recipe" />
                         </div>
-                        {/* Details */}
                         <div className="col-10 mx-auto col-md-6 my-3">
                             <h6 className="text-uppercase">{title}</h6>
                             <h6 className="text-warning text-capitalize text-slanted">
@@ -52,6 +53,7 @@ class Details extends React.Component {
                             <a href={source_url} target="_blank" 
                             rel="noopener noreferrer"
                             className="btn btn-success mt-2 mx-3 text-capitalize">Source's page</a>
+                            {/* Ingredients list */}
                             <ul className="list-group mt-4">
                                 <h2 className="mt-3 mb-4">Ingredients</h2>
                                 {
@@ -60,7 +62,7 @@ class Details extends React.Component {
                                             <li key={index} className="list-group-item text-slanted">
                                                 {ingredient}
                                             </li>
-                                        )
+                                        );
                                     })
                                 }
                             </ul>

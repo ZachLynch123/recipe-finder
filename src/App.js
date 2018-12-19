@@ -14,10 +14,12 @@ class App extends Component {
       recipes: [],
       url: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d',
       details_id: 0,
-      index: 1
+      index: 1,
+      search: ''
     }
   }
 
+  // Preforms Async request to get array of recipes
   async getRecipes() {
     try{
       const data = await fetch(this.state.url);
@@ -30,28 +32,35 @@ class App extends Component {
     }
   }
 
-  // commenting this out to make less requests to api
+  // comment function out to make less requests to api and use mock data
    componentDidMount() {
     this.getRecipes();
   } 
 
-  detailsPage = index => {
+  // Displays page based on index (1 for recipe list and 0 for details)
+  changePage = index => {
     switch(index) {
       default:
       case 1: 
-        return(<RecipeList handleDetailId={this.handleDetailId} recipes={this.state.recipes}  />)
+        return(<RecipeList handleDetailId={this.handleDetailId}
+          recipes={this.state.recipes}
+          value={this.state.search}
+          handleSearch={this.handleSearch}
+          handleSubmit={this.handleSubmit} />)
       case 0:
         return(<Details id={this.state.details_id} handleIndex={this.handleIndex}/>
           )
     }
   }
 
+  // Changes index of page (1 for main page, 0 for details page)
   handleIndex = index => {
     this.setState({
       index: index
     })
   }
 
+  // Changes index of page and dynamically sends recipe id to details component
   handleDetailId = (index, id) => {
     this.setState({
       index: index,
@@ -59,11 +68,21 @@ class App extends Component {
     })
   }
 
+  handleSearch = event => {
+    console.log('handleSearch');
+    
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log('from submit');
+  }
+
   render() {
     return (
       <div className="App">
         <RecipeSearch />
-        {this.detailsPage(this.state.index)}
+        {this.changePage(this.state.index)}
       </div>
     );
   }
