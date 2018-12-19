@@ -1,12 +1,14 @@
 import React from 'react';
 import Recipe from './Recipe';
+import RecipeSearch from './RecipeSearch';
 
 // convert to stateless component
 const RecipeList = props => {
-    console.log(props);
+    const { recipes, handleDetailId, handleSearch, handleSubmit, value} = props
     
     return(
         <React.Fragment>
+            <RecipeSearch value={value} handleSearch={handleSearch} handleSubmit={handleSubmit} />
             <div className="container my-5">
             {/* Title */}
                 <div className="row">
@@ -17,11 +19,11 @@ const RecipeList = props => {
                 </div>
                 <div className="row">
                     {
-                        props.recipes.map((recipe, index) => {
+                        recipes.map(recipe => {
                             return(
                                 <Recipe key={recipe.recipe_id}
                                 recipe={recipe}
-                                handleDetailId={props.handleDetailId}
+                                handleDetailId={handleDetailId}
                                 />
                             )
                         })
