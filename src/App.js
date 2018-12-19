@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {recipes} from './tempData';
 import RecipeList from './components/RecipeList';
-import Details from './components/Details'
+import Details from './components/Details';
+import RecipeSearch from './components/RecipeSearch';
 
 import './App.css';
 
@@ -61,6 +62,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <RecipeSearch />
         {this.detailsPage(this.state.index)}
       </div>
     );

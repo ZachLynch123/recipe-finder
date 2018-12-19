@@ -5,7 +5,6 @@ class Recipe extends React.Component {
     render() {
         const { image_url, title, source_url, publisher, recipe_id } = this.props.recipe;
         const { handleDetailId } = this.props;
-        console.log(this.props);
         
         return(
             <div className="col-10 mx-auto col-md-6 col-lg-4 my-3">
