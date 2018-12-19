@@ -30,7 +30,7 @@ class App extends Component {
 
   // commenting this out to make less requests to api
    componentDidMount() {
-    this.getRecipes();
+    //this.getRecipes();
   } 
 
 
@@ -39,8 +39,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         <RecipeList recipes={this.state.recipes} />
-        <Details id={this.state.details_id}/>
+{/*          <RecipeList recipes={this.state.recipes} />
+ */}        <Details id={this.state.details_id}/>
       </div>
     );
   }
