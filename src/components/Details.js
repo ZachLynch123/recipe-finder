@@ -1,5 +1,4 @@
 import React from 'react';
-import { recipe } from '../tempDetails';
 
 
 
@@ -8,8 +7,9 @@ class Details extends React.Component {
         super(props);
 
         this.state = {
-            recipe: recipe,
-            url: `https://www.food2fork.com/api/get?key=03c9de31969334077a097330d114675d&rId=${this.props.id}`
+            recipe: '',
+            url: `https://www.food2fork.com/api/get?key=03c9de31969334077a097330d114675d&rId=${this.props.id}`,
+            isLoaded: false
         }
     }
 
@@ -20,7 +20,7 @@ class Details extends React.Component {
             const data = await fetch(this.state.url);
             const josnData = await data.json()
             this.setState((state, props) => {
-                return {recipe: josnData.recipe}
+                return {recipe: josnData.recipe, isLoaded: true}
             }, () => {});
         } catch(e) {
             console.log(e);
@@ -31,7 +31,7 @@ class Details extends React.Component {
         // destructuring state and props
         const { image_url, publisher, publisher_url, source_url, title, ingredients } = this.state.recipe; 
         const { handleIndex } = this.props; 
-              
+        if (this.state.isLoaded){
         return(
             <React.Fragment>
                 <div className="container">
@@ -71,6 +71,9 @@ class Details extends React.Component {
                 </div>
 
             </React.Fragment>
+        )}
+        return (
+            <div>Loading..</div>
         )
     }
 }
