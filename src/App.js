@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       recipes: [],
       url: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d',
+      baseUrl: 'https://www.food2fork.com/api/search?key=03c9de31969334077a097330d114675d',
       details_id: 0,
       index: 1,
       search: ''
@@ -76,9 +77,9 @@ class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { url, search } = this.state;
+    const { baseUrl, search } = this.state;
     this.setState(() => {
-      return {url: url + `&q=${search}`, search: ''}
+      return {url: baseUrl + `&q=${search}`, search: ''}
     }, () => {
       this.getRecipes();
     })
