@@ -1,11 +1,12 @@
 import React from 'react';
 
+const RecipeSearch = props => {
+    // destructure props
+    const { value, handleSubmit, handleSearch } = props;
 
-class RecipeSearch extends React.Component{
-    render() {
-        const { value, handleSubmit, handleSearch } = this.props;
-        return(
-            <React.Fragment>
+    // Uses methods passed down to set state in App.js
+    return(
+        <React.Fragment>
                 <div className="container">
                     <div className="row">
                         <div className="col-10 mx-auto col-md-8 mt-5 text-center">
@@ -25,8 +26,7 @@ class RecipeSearch extends React.Component{
                     </div>
                 </div>
             </React.Fragment>
-        )
-    }
+    )
 }
 
 export default RecipeSearch;

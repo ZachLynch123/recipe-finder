@@ -2,8 +2,8 @@ import React from 'react';
 import Recipe from './Recipe';
 import RecipeSearch from './RecipeSearch';
 
-// convert to stateless component
 const RecipeList = props => {
+    // destructure props
     const { recipes, handleDetailId, handleSearch, handleSubmit, value} = props
     
     return(
