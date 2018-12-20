@@ -23,7 +23,8 @@ class App extends Component {
       const data = await fetch(this.state.url);
       const jsonData = await data.json();
       this.setState({
-        recipes: jsonData.recipes
+        recipes: jsonData.recipes,
+        search: ''
       });
     } catch(e) {
       console.log(e);
@@ -75,7 +76,13 @@ class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('from submit');
+    const { url, search } = this.state;
+    this.setState(() => {
+      return {url: url + `&q=${search}`, search: ''}
+    }, () => {
+      this.getRecipes();
+    })
+    
   }
 
   render() {

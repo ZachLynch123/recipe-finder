@@ -4,7 +4,6 @@ import React from 'react';
 class RecipeSearch extends React.Component{
     render() {
         const { value, handleSubmit, handleSearch } = this.props;
-        console.log(handleSearch)
         return(
             <React.Fragment>
                 <div className="container">
