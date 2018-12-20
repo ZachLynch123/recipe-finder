@@ -68,13 +68,15 @@ class App extends Component {
     })
   }
 
+  // Puts every keystroke into state's search key
   handleSearch = event => {
     this.setState({
       search: event.target.value
     })
     
   }
-
+  
+  // Uses value of Search to send a query to API
   handleSubmit = event => {
     event.preventDefault();
     const { baseUrl, search } = this.state;
