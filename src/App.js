@@ -65,7 +65,7 @@ class App extends Component {
     this.setState({
       index: index,
       details_id: id
-    })
+    });
   }
 
   // Puts every keystroke into state's search key
